@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int sum_of_digits(int number) {
+    int digit_sum = 0;
+    while (number > 0) {
+        digit_sum += number % 10;
+        number /= 10;
+    }
+    return digit_sum;
+}
+
+int reverse_number(int number) {
+    int reversed_num = 0;
+    while (number > 0) {
+        reversed_num = reversed_num * 10 + number % 10;
+        number /= 10;
+    }
+    return reversed_num;
+}
+
+int is_palindrome(int number) {
+    return number == reverse_number(number);
+}
+
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    int digit_sum = sum_of_digits(num);
+    printf("Sum of digits: %d\n", digit_sum);
+
+    int reversed_num = reverse_number(num);
+    printf("Reversed number: %d\n", reversed_num);
+
+    if (is_palindrome(num)) {
+        printf("The number is a palindrome.\n");
+    } else {
+        printf("The number is not a palindrome.\n");
+    }
+
+    return 0;
+}
